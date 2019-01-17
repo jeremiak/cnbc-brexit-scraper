@@ -38,11 +38,11 @@ const getApiUrl = (
 
 const parseDate = dateStr => {
   const d = dateStr.slice(0, 8)
-  const year = d.slice(0, 4)
-  const month = d.slice(5, 6)
-  const day = d.slice(7, 8)
+  const year = +d.slice(0, 4)
+  const month = +d.slice(4, 6)
+  const day = +d.slice(6, 8)
 
-  return new Date(+year, +month - 1, +day)
+  return new Date(year, month - 1, day)
 }
 
 const url = getApiUrl(`${program.endDate}000000`, program.currency)
@@ -53,7 +53,7 @@ http
 
     return daily
       .filter(d => {
-        return d.volume !== 0
+        return d.volume === 0
       })
       .map(d => {
         const date = parseDate(d.tradeTime)
