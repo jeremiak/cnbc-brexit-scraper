@@ -38,7 +38,7 @@ function insertMissingRows(doc, sheetIndex, json) {
     })
   }
   return getRows(doc, sheetIndex).then(rows => {
-    const q = queue(10)
+    const q = queue(1)
     const toBeCreated = []
     json.forEach(jRow => {
       const exists = rows.find(r => r.date === jRow.date)
