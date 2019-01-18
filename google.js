@@ -8,7 +8,7 @@ function authSheet(key) {
   const doc = new GoogleSpreadsheet(key)
   const creds = {
     client_email: process.env.GOOGLE_CLIENT_EMAIL,
-    private_key: process.env.GOOGLE_PRIVATE_KEY      
+    private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, "\n")
   }
 
   return new Promise((resolve, reject) => {
